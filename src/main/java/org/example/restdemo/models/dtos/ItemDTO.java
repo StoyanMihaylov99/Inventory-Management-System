@@ -1,31 +1,20 @@
-package org.example.restdemo.models.entities;
+package org.example.restdemo.models.dtos;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "items")
-public class Item {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ItemDTO {
     private int id;
-    @Column(name = "name", nullable = false)
     private  String  name;
-    @Column(name = "quantity", nullable = false)
     private int quantity;
-    @Column(name = "barcode", nullable = false, columnDefinition = "TEXT")
     private String barcode;
-    @Column(name = "enteredDate")
     private String enteredDate;
 
-    public Item() {
+    public ItemDTO() {
     }
 
     public int getId() {
         return id;
     }
 
-    public Item setId(int id) {
+    public ItemDTO setId(int id) {
         this.id = id;
         return this;
     }
@@ -34,7 +23,7 @@ public class Item {
         return name;
     }
 
-    public Item setName(String name) {
+    public ItemDTO setName(String name) {
         this.name = name;
         return this;
     }
@@ -43,7 +32,7 @@ public class Item {
         return quantity;
     }
 
-    public Item setQuantity(int quantity) {
+    public ItemDTO setQuantity(int quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -52,7 +41,7 @@ public class Item {
         return barcode;
     }
 
-    public Item setBarcode(String barcode) {
+    public ItemDTO setBarcode(String barcode) {
         this.barcode = barcode;
         return this;
     }
@@ -61,14 +50,14 @@ public class Item {
         return enteredDate;
     }
 
-    public Item setEnteredDate(String enteredDate) {
+    public ItemDTO setEnteredDate(String enteredDate) {
         this.enteredDate = enteredDate;
         return this;
     }
 
     @Override
     public String toString() {
-        return "Item{" +
+        return "ItemDTO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", quantity=" + quantity +
