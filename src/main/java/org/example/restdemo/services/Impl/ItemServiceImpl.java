@@ -1,11 +1,15 @@
 package org.example.restdemo.services.Impl;
+
 import org.example.restdemo.models.dtos.ItemDTO;
 import org.example.restdemo.models.entities.Item;
 import org.example.restdemo.repositories.ItemRepository;
 import org.example.restdemo.services.Inter.ItemService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ItemServiceImpl implements ItemService {
@@ -34,22 +38,27 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public ItemDTO findItemById(int id) {
         Optional<Item> itemToFind = itemRepository.findById(id);
-        if(itemToFind.isPresent()){
-            return modelMapper.map(itemToFind,ItemDTO.class);
+        if (itemToFind.isPresent()) {
+            return modelMapper.map(itemToFind, ItemDTO.class);
         }
         return null;
     }
 
     @Override
-    public boolean updateItem(ItemDTO itemDTO) {
+    public ItemDTO updateItem(ItemDTO itemDTO) {
         Optional<Item> existingItem = itemRepository.findById(itemDTO.getId());
         if (existingItem.isPresent()) {
             Item itemToSave = existingItem.get();
             modelMapper.map(itemDTO, itemToSave);
             itemRepository.save(itemToSave);
-            return true;
+            return modelMapper.map(itemRepository.findById(itemToSave.getId()), ItemDTO.class);
         }
-        return false;
+        return null;
 
+    }
+
+    @Override
+    public List<ItemDTO> findAll() {
+        return itemRepository.findAll().stream().map(i -> modelMapper.map(i, ItemDTO.class)).collect(Collectors.toList());
     }
 }
