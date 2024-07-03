@@ -2,6 +2,8 @@ package org.example.restdemo.models.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "items")
 public class Item {
@@ -16,7 +18,7 @@ public class Item {
     @Column(name = "barcode", nullable = false, columnDefinition = "TEXT")
     private String barcode;
     @Column(name = "enteredDate")
-    private String enteredDate;
+    private Date enteredDate;
 
     public Item() {
     }
@@ -57,11 +59,11 @@ public class Item {
         return this;
     }
 
-    public String getEnteredDate() {
+    public Date getEnteredDate() {
         return enteredDate;
     }
 
-    public Item setEnteredDate(String enteredDate) {
+    public Item setEnteredDate(Date enteredDate) {
         this.enteredDate = enteredDate;
         return this;
     }

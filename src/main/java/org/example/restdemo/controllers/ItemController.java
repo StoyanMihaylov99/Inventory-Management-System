@@ -1,10 +1,10 @@
 package org.example.restdemo.controllers;
+import jakarta.validation.Valid;
 import org.example.restdemo.models.dtos.ItemDTO;
 import org.example.restdemo.services.Impl.ItemServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-
 import java.net.URI;
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class ItemController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<ItemDTO> createItem(@RequestBody ItemDTO postItem, UriComponentsBuilder uriComponentsBuilder) {
+    public ResponseEntity<ItemDTO> createItem(@RequestBody @Valid ItemDTO postItem, UriComponentsBuilder uriComponentsBuilder) {
         int itemId = itemService.saveItem(postItem);
         URI location = uriComponentsBuilder.path("/items/{id}").buildAndExpand(itemId).toUri();
         return ResponseEntity.created(location).build();
@@ -44,7 +44,7 @@ public class ItemController {
     }
 
     @PutMapping("/")
-    public ResponseEntity<ItemDTO> updateItem(@RequestBody ItemDTO itemDTO) {
+    public ResponseEntity<ItemDTO> updateItem(@RequestBody @Valid  ItemDTO itemDTO) {
         if (itemService.updateItem(itemDTO) != null) {
             return ResponseEntity.noContent().build();
         } else {

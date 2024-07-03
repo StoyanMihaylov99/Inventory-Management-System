@@ -1,11 +1,26 @@
 package org.example.restdemo.models.dtos;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+import java.util.Date;
 
 public class ItemDTO {
+    @NotNull
     private int id;
+    @NotBlank(message = "Name cannot be blank")
+    @Size(min = 2, max = 50, message = "Name length must be between 2 and 50 characters")
     private  String  name;
+    @NotNull(message = "Quantity cannot be blank")
+    @Positive(message = "Quantity should be positive")
     private int quantity;
+    @NotBlank(message = "Barcode cannot be blank")
+    @Size(min = 0, max = 30, message = "Barcode length must be between 0 and 30 characters")
     private String barcode;
-    private String enteredDate;
+    @NotNull(message = "Date cannot be blank")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    private Date enteredDate;
 
     public ItemDTO() {
     }
@@ -46,11 +61,12 @@ public class ItemDTO {
         return this;
     }
 
-    public String getEnteredDate() {
+
+    public Date getEnteredDate() {
         return enteredDate;
     }
 
-    public ItemDTO setEnteredDate(String enteredDate) {
+    public ItemDTO setEnteredDate(Date enteredDate) {
         this.enteredDate = enteredDate;
         return this;
     }
