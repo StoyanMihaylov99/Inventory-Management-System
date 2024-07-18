@@ -16,3 +16,10 @@ The Inventory Management System is a RESTful application designed to manage inve
   * Spring Data JPA: Abstraction layer to simplify database operations.
   * MySQL: Relational database for storing application data.
   * Spring Security: For securing the application endpoints.
+
+## Screen shots
+
+![getAll](https://github.com/user-attachments/assets/3c41d2bd-6c40-4354-8e0a-704e97a14171)
+![post](https://github.com/user-attachments/assets/f9a57c36-ffa8-47f7-9b98-170b2387bb7f)
+
+
