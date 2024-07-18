@@ -3,7 +3,12 @@
 
 ## Overview
 
-The Inventory Management System is a RESTful application designed to manage inventory data efficiently. This system allows users to perform CRUD operations on inventory items, suppliers, and orders, ensuring streamlined and effective inventory management. Built using Spring Framework, Java, JPA, and MySQL, this application provides a robust backend for handling inventory data.
+The Inventory Management System is a RESTful application designed to manage inventory data efficiently. This system allows users to perform CRUD operations on inventory items ensuring streamlined and effective inventory management. Built using Spring Framework, Java, JPA, and MySQL, this application provides a robust backend for handling inventory data.
+
+## Features
+
+ * CRUD Operations: Create, Read, Update, and Delete inventory items.
+ * Security: Implemented using Spring Security for user authentication and authorization.
 
 ## Technologies Used
   * Spring Framework: Core framework for developing the application.
